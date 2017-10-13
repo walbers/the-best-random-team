@@ -1,6 +1,10 @@
 from flask import Flask, render_template
 
+import views
+
 app = Flask(__name__)
+
+app.register_blueprint(views.api.blueprint, url_prefix="/api/led")
 
 @app.route("/")
 def index():
