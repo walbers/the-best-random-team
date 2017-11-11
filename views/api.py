@@ -1,26 +1,25 @@
 from flask import Blueprint, request
 
 from decorators import api_wrapper
+import utils
 
 blueprint = Blueprint("api", __name__)
 
-@blueprint.route("/on", methods=["POST"])
+@blueprint.route("/on", methods=["GET"])
 @api_wrapper
 def turn_on():
     """Handle request to turn on an led"""
-    form = request.form
-    led = form.get("led")
-    print("Turn on LED #{}".format(led))
-    return {"success": True}
+    if utils.send_string("on"):
+        return {"success": True}
+    return {"success": False}
 
-@blueprint.route("/off", methods=["POST"])
+@blueprint.route("/off", methods=["GET"])
 @api_wrapper
 def turn_off():
     """Handle request to turn off an led"""
-    form = request.form
-    led = form.get("led")
-    print("Turn off LED #{}".format(led))
-    return {"success": True}
+    if utils.send_string("off"):
+        return {"success": True}
+    return {"success": False}
 
 @blueprint.route("/color", methods=["GET", "POST"])
 @api_wrapper
