@@ -1,4 +1,5 @@
 import serial
+import time
 
 PORT = "/dev/ttyACM0"
 BAUD_RATE = 9600
@@ -18,6 +19,7 @@ def send_string(string):
         print(ser.readline())
         print("Sending %s" % string)
         ser.write(string.encode("utf-8"))
+        time.sleep(1)
         print(ser.readline())
     except Exception as e:
         print(e)
