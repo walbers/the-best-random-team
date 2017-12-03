@@ -12,10 +12,12 @@ def initialize_serial():
     ser = serial.Serial(port=PORT, parity=PARITY, stopbits=STOPBITS, bytesize=BYTESIZE, timeout=TIMEOUT)
     return ser
 
+
 def send_string(string):
     try:
         ser = initialize_serial()
-        ser.open()
+        if not ser.isOpen():
+            ser.open()
         print(ser.readline())
         print("Sending %s" % string)
         ser.write(string.encode("utf-8"))

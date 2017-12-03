@@ -9,10 +9,11 @@
 		<title>The Best Random Team</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+                <script src="/static/axios.min.js"></script>
+		<!--[if lte IE 8]><script src="/static/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="/static/assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="/static/assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body id="top">
 
@@ -24,9 +25,9 @@
 					<ul class="actions">
 						<button onclick="on()">ON</button>
 						<button onclick="off()">OFF</button>
-						<button onclick="flash()">FLASH</button>
-						<button onclick="rainbow()">RAINBOW</button>
-						<button onclick="wildcard()">WILDCARD</button>
+						<button onclick="rainbow1()">RAINBOW 1</button>
+						<button onclick="rainbow2()">RAINBOW 2</button>
+						<button onclick="rainbow3()">RAINBOW 3</button>
 						
 					</ul>
 
@@ -34,7 +35,6 @@
 					<p id="demo"></p>
 
 					<script>
-						var axios = require('axios')
 						function sendreq(str){
 							axios.post('/api/send/'+ str)
 						  .then(response => {
@@ -55,21 +55,20 @@
 			    		sendreq('off');
 						}
 
-						function rainbow() {
-			    		document.getElementById("demo").innerHTML = "BUTTON PRESSED: RAINBOW";
-			    		sendreq('rainbow');
+						function rainbow1() {
+			    		document.getElementById("demo").innerHTML = "BUTTON PRESSED: RAINBOW 1";
+			    		sendreq('rainbow1');
 						}
 
-						function wildcard() {
-			    		document.getElementById("demo").innerHTML = "BUTTON PRESSED: WILDCARD";
-			    		sendreq('wildcard');
+						function rainbow2() {
+			    		document.getElementById("demo").innerHTML = "BUTTON PRESSED: RAINBOW 2";
+			    		sendreq('rainbow2');
 						}
 
-						function flash() {
-			    		document.getElementById("demo").innerHTML = "BUTTON PRESSED: FLASH";
-			    		sendreq('flash');
+						function rainbow3() {
+			    		document.getElementById("demo").innerHTML = "BUTTON PRESSED: RAINBOW 3";
+			    		sendreq('rainbow3');
 						}
-						
 					</script>
 				</div>
 					
